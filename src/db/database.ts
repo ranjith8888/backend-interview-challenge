@@ -1,5 +1,4 @@
 import sqlite3 from 'sqlite3';
-import { promisify } from 'util';
 import { Task, SyncQueueItem } from '../types';
 
 const sqlite = sqlite3.verbose();
@@ -44,11 +43,25 @@ export class Database {
       )
     `;
 
+    const createDeadLetterQueueTable = `
+      CREATE TABLE IF NOT EXISTS sync_dead_letter_queue (
+        id TEXT PRIMARY KEY,
+        task_id TEXT NOT NULL,
+        operation TEXT NOT NULL,
+        data TEXT NOT NULL,
+        created_at DATETIME,
+        retry_count INTEGER,
+        error_message TEXT,
+        failed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        original_sync_queue_id TEXT
+      )
+    `;
+
     await this.run(createTasksTable);
     await this.run(createSyncQueueTable);
+    await this.run(createDeadLetterQueueTable);
   }
 
-  // Helper methods
   run(sql: string, params: any[] = []): Promise<void> {
     return new Promise((resolve, reject) => {
       this.db.run(sql, params, (err) => {
