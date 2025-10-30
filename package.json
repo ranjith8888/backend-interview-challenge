@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿{
+=======
+{
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
   "name": "task-sync-api",
   "version": "1.0.0",
   "description": "Task Sync API",
@@ -26,4 +30,8 @@
     "ts-node-dev": "^2.0.0",
     "vitest": "^0.34.0"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf

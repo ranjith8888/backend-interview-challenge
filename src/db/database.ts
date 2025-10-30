@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿import sqlite3 from 'sqlite3';
+=======
+import sqlite3 from 'sqlite3';
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
 import { Task, SyncQueueItem } from '../types';
 
 const sqlite = sqlite3.verbose();
@@ -7,6 +11,7 @@ export class Database {
   private db: sqlite3.Database;
 
   constructor(filename: string = ':memory:') {
+<<<<<<< HEAD
     // Create data directory if it doesn't exist
     const path = require('path');
     const fs = require('fs');
@@ -16,6 +21,8 @@ export class Database {
       fs.mkdirSync(dbDir, { recursive: true });
     }
     
+=======
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
     this.db = new sqlite.Database(filename);
   }
 
@@ -24,7 +31,11 @@ export class Database {
   }
 
   private async createTables(): Promise<void> {
+<<<<<<< HEAD
     const createTasksTable = \
+=======
+    const createTasksTable = `
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
       CREATE TABLE IF NOT EXISTS tasks (
         id TEXT PRIMARY KEY,
         title TEXT NOT NULL,
@@ -37,9 +48,15 @@ export class Database {
         server_id TEXT,
         last_synced_at DATETIME
       )
+<<<<<<< HEAD
     \;
 
     const createSyncQueueTable = \
+=======
+    `;
+
+    const createSyncQueueTable = `
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
       CREATE TABLE IF NOT EXISTS sync_queue (
         id TEXT PRIMARY KEY,
         task_id TEXT NOT NULL,
@@ -50,9 +67,15 @@ export class Database {
         error_message TEXT,
         FOREIGN KEY (task_id) REFERENCES tasks(id)
       )
+<<<<<<< HEAD
     \;
 
     const createDeadLetterQueueTable = \
+=======
+    `;
+
+    const createDeadLetterQueueTable = `
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
       CREATE TABLE IF NOT EXISTS sync_dead_letter_queue (
         id TEXT PRIMARY KEY,
         task_id TEXT NOT NULL,
@@ -64,7 +87,11 @@ export class Database {
         failed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         original_sync_queue_id TEXT
       )
+<<<<<<< HEAD
     \;
+=======
+    `;
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
 
     await this.run(createTasksTable);
     await this.run(createSyncQueueTable);
@@ -106,4 +133,8 @@ export class Database {
       });
     });
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf

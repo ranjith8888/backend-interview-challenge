@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿import express from 'express';
+=======
+import express from 'express';
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Database } from './db/database';
@@ -11,6 +15,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+<<<<<<< HEAD
 app.use(cors());
 app.use(express.json());
 
@@ -40,15 +45,36 @@ app.get('/', (req, res) => {
   });
 });
 
+=======
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Initialize database
+const db = new Database(process.env.DATABASE_URL || './data/tasks.sqlite3');
+
+// Routes
+app.use('/api/tasks', createTaskRouter(db));
+app.use('/api', createSyncRouter(db));
+
+// Error handling
+app.use(errorHandler);
+
+// Start server
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
 async function start() {
   try {
     await db.initialize();
     console.log('Database initialized');
     
     app.listen(PORT, () => {
+<<<<<<< HEAD
       console.log(\Server running on port \\);
       console.log(\API available at http://localhost:\\);
       console.log(\Environment: \\);
+=======
+      console.log(`Server running on port ${PORT}`);
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
     });
   } catch (error) {
     console.error('Failed to start server:', error);
@@ -58,8 +84,16 @@ async function start() {
 
 start();
 
+<<<<<<< HEAD
+=======
+// Graceful shutdown
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
 process.on('SIGTERM', async () => {
   console.log('SIGTERM received, shutting down gracefully');
   await db.close();
   process.exit(0);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf

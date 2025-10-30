@@ -1,11 +1,32 @@
+<<<<<<< HEAD
 ﻿{
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
+=======
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
+<<<<<<< HEAD
     "skipLibCheck": true
   }
 }
+=======
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"]
+}
+>>>>>>> 97e3c117db302a9378850e23984f054207c67daf
