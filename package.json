@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 ﻿{
-=======
-{
->>>>>>> 97e3c117db302a9378850e23984f054207c67daf
   "name": "task-sync-api",
   "version": "1.0.0",
-  "description": "Task Sync API",
-  "main": "src/server.ts",
+  "description": "Task Sync API with offline synchronization",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
@@ -29,9 +25,8 @@
     "typescript": "^5.1.6",
     "ts-node-dev": "^2.0.0",
     "vitest": "^0.34.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 97e3c117db302a9378850e23984f054207c67daf
